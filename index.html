@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전기 전문 출동 - 서울 인천 경기 24시간 긴급전기공사</title>
+    <meta name="description" content="서울 인천 경기 전기 누전 차단기 콘센트 조명 긴급출동. 간단한 전기 수리 당일 연결. 담당 지역 전기 전문가를 빠르게 소개해드립니다.">
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iI2Y1OTYwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTUlIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCI+4pmlPC90ZXh0Pjwvc3ZnPg==" type="image/svg+xml">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:#0a0a0f;color:#fff;overflow-x:hidden}
+
+        .particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+        .particle{position:absolute;width:2px;background:linear-gradient(180deg,#f59600,transparent);animation:fall linear infinite;opacity:0}
+        @keyframes fall{0%{transform:translateY(-100px);opacity:1}100%{transform:translateY(100vh);opacity:0}}
+
+        .float-call{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+        .float-call a{background:linear-gradient(135deg,#f59600,#e65100);color:#fff;padding:16px 24px;border-radius:50px;font-size:1em;font-weight:900;text-decoration:none;box-shadow:0 6px 25px rgba(245,150,0,.5);animation:glow 2s infinite;display:flex;align-items:center;gap:8px}
+        .float-call span{background:rgba(0,0,0,.85);color:#f59600;padding:6px 14px;border-radius:20px;font-size:.78em;font-weight:700;border:1px solid #f5960033}
+        @keyframes glow{0%,100%{box-shadow:0 6px 25px rgba(245,150,0,.5)}50%{box-shadow:0 6px 40px rgba(245,150,0,.9),0 0 60px rgba(245,150,0,.3)}}
+
+        .hero{min-height:100vh;background:linear-gradient(135deg,#0a0a0f 0%,#0f1020 30%,#1a0f00 70%,#0a0a0f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden;z-index:1}
+        .hero::before{content:'⚡';position:absolute;font-size:30em;opacity:.03;top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse-icon 4s ease-in-out infinite}
+        @keyframes pulse-icon{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.05)}}
+        .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(245,150,0,.08) 0%,transparent 65%)}
+
+        .warning-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(245,150,0,.15);border:1px solid rgba(245,150,0,.4);padding:10px 22px;border-radius:50px;font-size:.88em;letter-spacing:1px;margin-bottom:30px;backdrop-filter:blur(10px)}
+        .warning-tag .blink{animation:blink-ani 1s infinite}
+        @keyframes blink-ani{0%,100%{opacity:1}50%{opacity:.2}}
+
+        .hero h1{font-size:clamp(2.2em,6vw,4.2em);font-weight:900;line-height:1.15;margin-bottom:22px;position:relative;z-index:1}
+        .hero h1 .yellow{color:#f59600}
+        .hero-sub{font-size:clamp(1em,2.3vw,1.25em);color:rgba(255,255,255,.75);max-width:620px;line-height:1.8;margin-bottom:15px;position:relative;z-index:1}
+        .danger-box{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5;padding:12px 24px;border-radius:10px;font-size:.95em;margin-bottom:40px;position:relative;z-index:1}
+
+        .btn-group{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;margin-bottom:50px}
+        .btn-main{background:linear-gradient(135deg,#f59600,#e65100);color:#fff;padding:20px 48px;border-radius:12px;font-size:1.3em;font-weight:900;text-decoration:none;box-shadow:0 8px 30px rgba(245,150,0,.45);transition:transform .2s}
+        .btn-main:hover{transform:translateY(-3px)}
+        .btn-ghost{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);color:#fff;padding:20px 35px;border-radius:12px;font-size:1em;font-weight:700;text-decoration:none;backdrop-filter:blur(8px);transition:background .2s}
+        .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+        .region-tags{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;position:relative;z-index:1}
+        .rtag{background:rgba(245,150,0,.12);border:1px solid rgba(245,150,0,.3);color:#fcd34d;padding:6px 16px;border-radius:20px;font-size:.83em}
+
+        .danger-bar{background:linear-gradient(90deg,#7f1d1d,#991b1b,#7f1d1d);padding:16px 20px;text-align:center;position:relative;overflow:hidden}
+        .danger-bar::before{content:'';position:absolute;top:0;left:-100%;width:300%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:shine 3s linear infinite}
+        @keyframes shine{to{left:100%}}
+        .danger-bar p{color:#fecaca;font-size:.9em;font-weight:600;letter-spacing:.5px}
+        .danger-bar span{color:#fff;font-weight:900}
+
+        .stats{background:#0f0f1a;padding:55px 20px;border-bottom:1px solid rgba(245,150,0,.15)}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:25px;max-width:850px;margin:0 auto;text-align:center}
+        .stat-n{font-size:2.8em;font-weight:900;color:#f59600;display:block;line-height:1}
+        .stat-l{font-size:.82em;color:rgba(255,255,255,.55);margin-top:6px}
+
+        .sec{padding:75px 20px;position:relative;z-index:1}
+        .sec-inner{max-width:1050px;margin:0 auto}
+        .sec-label{display:inline-block;background:rgba(245,150,0,.15);border:1px solid rgba(245,150,0,.3);color:#f59600;padding:4px 14px;border-radius:4px;font-size:.78em;font-weight:700;letter-spacing:2px;margin-bottom:14px}
+        .sec-title{font-size:clamp(1.6em,3.8vw,2.4em);font-weight:900;margin-bottom:10px}
+        .sec-title span{color:#f59600}
+        .sec-desc{color:rgba(255,255,255,.6);font-size:.98em;line-height:1.7;margin-bottom:50px}
+
+        .danger-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+        .d-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:26px 22px;transition:all .3s;position:relative;overflow:hidden}
+        .d-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59600,#ef4444)}
+        .d-card:hover{background:rgba(245,150,0,.06);border-color:rgba(245,150,0,.3);transform:translateY(-4px)}
+        .d-icon{font-size:2.3em;margin-bottom:12px;display:block}
+        .d-card h3{font-size:1.02em;font-weight:800;margin-bottom:7px;color:#fcd34d}
+        .d-card p{font-size:.87em;color:rgba(255,255,255,.62);line-height:1.7}
+        .d-badge{position:absolute;top:14px;right:14px;background:#ef4444;color:#fff;font-size:.7em;font-weight:700;padding:3px 8px;border-radius:4px}
+
+        .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+        .svc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:28px 20px;text-align:center;transition:all .3s}
+        .svc-card:hover{background:rgba(245,150,0,.08);border-color:rgba(245,150,0,.4);transform:translateY(-5px)}
+        .svc-icon{font-size:2.6em;margin-bottom:14px;display:block}
+        .svc-card h3{font-size:.98em;font-weight:800;margin-bottom:7px;color:#fff}
+        .svc-card p{font-size:.83em;color:rgba(255,255,255,.55);line-height:1.6}
+        .svc-tag{display:inline-block;margin-top:10px;background:rgba(245,150,0,.15);color:#f59600;padding:4px 12px;border-radius:20px;font-size:.78em;font-weight:700}
+
+        .gal-sec{background:#080810;padding:70px 20px}
+        .gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;max-width:1050px;margin:0 auto}
+        .gal-item{border-radius:12px;overflow:hidden;position:relative;border:1px solid rgba(245,150,0,.15)}
+        .gal-item img{width:100%;height:210px;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.95)}
+        .gal-item:hover img{transform:scale(1.06);filter:brightness(1.05)}
+        .gal-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:14px 12px;font-size:.85em;font-weight:700;color:#fcd34d}
+
+        .proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;max-width:950px;margin:0 auto;text-align:center;position:relative}
+        .proc-grid::before{content:'';position:absolute;top:35px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,#f59600,#ef4444,#f59600);z-index:0}
+        .proc-step{position:relative;z-index:1;padding:20px 15px}
+        .proc-num{width:65px;height:65px;background:linear-gradient(135deg,#f59600,#e65100);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3em;font-weight:900;margin:0 auto 15px;box-shadow:0 4px 20px rgba(245,150,0,.4)}
+        .proc-step h3{font-size:.95em;font-weight:800;margin-bottom:7px;color:#fcd34d}
+        .proc-step p{font-size:.82em;color:rgba(255,255,255,.58);line-height:1.6}
+
+        .area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:950px;margin:0 auto}
+        .area-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:24px 18px;text-align:center;transition:border-color .3s}
+        .area-card:hover{border-color:rgba(245,150,0,.4)}
+        .area-card h3{font-size:1.1em;font-weight:900;color:#f59600;margin-bottom:9px}
+        .area-card p{font-size:.81em;color:rgba(255,255,255,.5);line-height:1.85}
+
+        .cta-sec{background:linear-gradient(135deg,#1a0f00,#0f0800,#1a0f00);padding:85px 20px;text-align:center;position:relative;overflow:hidden}
+        .cta-sec::before{content:'⚡';position:absolute;font-size:25em;opacity:.04;top:50%;left:50%;transform:translate(-50%,-50%)}
+        .cta-inner{position:relative;z-index:1}
+        .cta-sec h2{font-size:clamp(1.8em,4vw,2.9em);font-weight:900;margin-bottom:15px}
+        .cta-sec h2 span{color:#f59600}
+        .cta-sec p{color:rgba(255,255,255,.75);margin-bottom:40px;font-size:1.05em;line-height:1.75}
+        .cta-btn{display:inline-block;background:linear-gradient(135deg,#f59600,#e65100);color:#fff;padding:24px 65px;border-radius:14px;font-size:1.6em;font-weight:900;text-decoration:none;box-shadow:0 8px 35px rgba(245,150,0,.5);transition:transform .2s;animation:glow 2s infinite}
+        .cta-btn:hover{transform:scale(1.04)}
+        .cta-note{margin-top:22px;font-size:.88em;color:rgba(255,255,255,.45)}
+
+        /* 면책 고지 */
+        .disclaimer{background:#050508;padding:28px 20px;border-top:1px solid #1a1a1a}
+        .disclaimer-inner{max-width:900px;margin:0 auto;text-align:center}
+        .disclaimer p{color:#555;font-size:.78em;line-height:1.9}
+        .disclaimer .highlight{color:#666;font-weight:600}
+
+        footer{background:#050508;padding:25px 20px;text-align:center;color:rgba(255,255,255,.25);font-size:.82em;border-top:1px solid #111}
+        footer span{color:#f59600}
+
+        @media(max-width:600px){
+            .btn-group{flex-direction:column;align-items:center}
+            .btn-main,.btn-ghost{width:100%;text-align:center}
+            .proc-grid::before{display:none}
+        }
+    </style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<div class="float-call">
+    <span>⚡ 전기 문제 즉시 연결</span>
+    <a href="tel:0504-1362-8442">⚡ 0504-1362-8442 지금 연결</a>
+</div>
+
+<div class="danger-bar">
+    <p>⚠️ <span>전기 누전·합선·차단기 트립</span>은 화재로 이어질 수 있습니다 — 즉시 차단기 내리고 전문가에게 연락하세요</p>
+</div>
+
+<section class="hero">
+    <div class="warning-tag"><span class="blink">🔴</span> 24시간 전기 전문가 연결 서비스</div>
+    <h1>
+        전기 문제<br>
+        <span class="yellow">⚡ 담당 지역</span><br>
+        전문가가 해결합니다
+    </h1>
+    <p class="hero-sub">누전·차단기·조명·콘센트 수리<br>서울·인천·경기 담당 지역 전기 전문가 즉시 연결</p>
+    <div class="danger-box">🔥 전기 문제 방치 시 — 화재 위험 · 감전 위험 · 전기료 폭탄 유발</div>
+    <div class="btn-group">
+        <a href="tel:0504-1362-8442" class="btn-main">⚡ 0504-1362-8442 지금 연결</a>
+        <a href="#services" class="btn-ghost">서비스 안내 보기 ↓</a>
+    </div>
+    <div class="region-tags">
+        <span class="rtag">서울 전 지역</span>
+        <span class="rtag">인천 전 지역</span>
+        <span class="rtag">경기 전 지역</span>
+        <span class="rtag">강남·서초·송파</span>
+        <span class="rtag">수원·성남·분당</span>
+        <span class="rtag">부천·안양·광명</span>
+        <span class="rtag">고양·일산·파주</span>
+        <span class="rtag">남양주·하남·구리</span>
+    </div>
+</section>
+
+<div class="stats">
+    <div class="stats-grid">
+        <div><span class="stat-n">24H</span><div class="stat-l">365일 연결 가능</div></div>
+        <div><span class="stat-n">30분</span><div class="stat-l">평균 연결 시간</div></div>
+        <div><span class="stat-n">전국</span><div class="stat-l">담당 지역 전문가</div></div>
+        <div><span class="stat-n">무료</span><div class="stat-l">연결 수수료 없음</div></div>
+        <div><span class="stat-n">즉시</span><div class="stat-l">당일 방문 가능</div></div>
+    </div>
+</div>
+
+<section class="sec" style="background:#0a0a0f">
+    <div class="sec-inner">
+        <div style="text-align:center;margin-bottom:50px">
+            <div class="sec-label">DANGER CHECK</div>
+            <h2 class="sec-title">지금 이런 증상 <span>있으신가요?</span></h2>
+            <p class="sec-desc">하나라도 해당되면 즉시 차단기 내리고 전화하세요 — 전기 문제는 화재로 이어집니다</p>
+        </div>
+        <div class="danger-grid">
+            <div class="d-card"><div class="d-badge">위험</div><span class="d-icon">💥</span><h3>차단기가 자꾸 내려간다</h3><p>누전 또는 과부하의 신호입니다. 반복되면 화재 위험이 높습니다</p></div>
+            <div class="d-card"><div class="d-badge">위험</div><span class="d-icon">🔥</span><h3>콘센트에서 불꽃이 튄다</h3><p>합선 직전 상태입니다. 즉시 해당 콘센트 사용을 중단하세요</p></div>
+            <div class="d-card"><div class="d-badge">위험</div><span class="d-icon">😵</span><h3>전기 만질 때 찌릿하다</h3><p>누전으로 인한 감전 증상입니다. 즉시 차단기를 내리세요</p></div>
+            <div class="d-card"><div class="d-badge">주의</div><span class="d-icon">💡</span><h3>조명이 깜빡거린다</h3><p>전압 불안정 또는 접촉 불량 신호. 전자기기 손상으로 이어집니다</p></div>
+            <div class="d-card"><div class="d-badge">주의</div><span class="d-icon">🌡️</span><h3>콘센트·스위치가 뜨겁다</h3><p>내부 접촉 불량으로 과열 중입니다. 즉시 사용 중단 후 점검이 필요합니다</p></div>
+            <div class="d-card"><div class="d-badge">확인</div><span class="d-icon">⚡</span><h3>갑자기 정전이 됐다</h3><p>외부 정전인지 내부 문제인지 확인이 필요합니다. 혼자 판단하지 마세요</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="sec" style="background:#0f0f1a" id="services">
+    <div class="sec-inner">
+        <div style="text-align:center;margin-bottom:50px">
+            <div class="sec-label">SERVICES</div>
+            <h2 class="sec-title">연결 가능한 <span>전기 서비스</span></h2>
+            <p class="sec-desc">간단한 전기 수리부터 조명·차단기까지 — 담당 지역 전문가를 빠르게 연결해드립니다</p>
+        </div>
+        <div class="svc-grid">
+            <div class="svc-card"><span class="svc-icon">🔍</span><h3>누전 탐지·보수</h3><p>누전 원인 파악 후 즉시 보수 처리</p><span class="svc-tag">긴급 연결</span></div>
+            <div class="svc-card"><span class="svc-icon">⚡</span><h3>차단기 교체</h3><p>분전함 차단기 교체 및 누전차단기 설치</p><span class="svc-tag">당일 연결</span></div>
+            <div class="svc-card"><span class="svc-icon">🔋</span><h3>콘센트·스위치 교체</h3><p>파손·노후 콘센트·스위치 안전 교체</p><span class="svc-tag">즉시 연결</span></div>
+            <div class="svc-card"><span class="svc-icon">💡</span><h3>조명·LED 교체</h3><p>형광등·LED·다운라이트 교체 시공</p><span class="svc-tag">당일 연결</span></div>
+            <div class="svc-card"><span class="svc-icon">🔌</span><h3>전기 점검</h3><p>가정·사무실 전기 상태 전반 점검</p><span class="svc-tag">상담 연결</span></div>
+            <div class="svc-card"><span class="svc-icon">🏠</span><h3>기타 간단 전기</h3><p>간단한 전기 수리 및 소규모 배선 작업</p><span class="svc-tag">상담 후 연결</span></div>
+        </div>
+    </div>
+</section>
+
+<div class="gal-sec">
+    <div style="text-align:center;margin-bottom:40px">
+        <div class="sec-label">GALLERY</div>
+        <h2 class="sec-title">실제 <span>작업 현장</span></h2>
+    </div>
+    <div class="gal-grid">
+        <div class="gal-item"><img src="https://loremflickr.com/600/420/electric,wire?random=11" alt="전기 배선 점검"><div class="gal-label">⚡ 전기 배선 점검</div></div>
+        <div class="gal-item"><img src="https://loremflickr.com/600/420/electrician,panel?random=22" alt="차단기 교체"><div class="gal-label">🔌 차단기 교체</div></div>
+        <div class="gal-item"><img src="https://loremflickr.com/600/420/electrical,circuit?random=33" alt="누전 탐지"><div class="gal-label">🔍 누전 탐지</div></div>
+        <div class="gal-item"><img src="https://loremflickr.com/600/420/light,LED?random=44" alt="조명 교체"><div class="gal-label">💡 LED 조명 교체</div></div>
+        <div class="gal-item"><img src="https://loremflickr.com/600/420/outlet,socket?random=55" alt="콘센트 교체"><div class="gal-label">🔋 콘센트 교체</div></div>
+        <div class="gal-item"><img src="https://loremflickr.com/600/420/repair,electric?random=66" alt="전기 수리"><div class="gal-label">🔧 전기 수리 완료</div></div>
+        <div class="gal-item"><img src="https://loremflickr.com/600/420/wiring,house?random=77" alt="가정 전기"><div class="gal-label">🏠 가정 전기 점검</div></div>
+    </div>
+</div>
+
+<section class="sec" style="background:#0f0f1a">
+    <div class="sec-inner">
+        <div style="text-align:center;margin-bottom:55px">
+            <div class="sec-label">PROCESS</div>
+            <h2 class="sec-title">연결 <span>프로세스</span></h2>
+            <p class="sec-desc">전화 한 통으로 담당 지역 전문가를 빠르게 연결해드립니다</p>
+        </div>
+        <div class="proc-grid">
+            <div class="proc-step"><div class="proc-num">1</div><h3>전화 접수</h3><p>증상 설명만 해주시면 즉시 접수</p></div>
+            <div class="proc-step"><div class="proc-num">2</div><h3>지역 확인</h3><p>담당 지역 전문가 즉시 확인</p></div>
+            <div class="proc-step"><div class="proc-num">3</div><h3>전문가 연결</h3><p>담당 전기 전문가와 직접 연결</p></div>
+            <div class="proc-step"><div class="proc-num">4</div><h3>현장 방문</h3><p>전문가 방문 후 현장 진단·시공</p></div>
+            <div class="proc-step"><div class="proc-num">5</div><h3>완료</h3><p>작업 완료 및 안전 확인</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="sec" style="background:#0a0a0f">
+    <div class="sec-inner">
+        <div style="text-align:center;margin-bottom:50px">
+            <div class="sec-label">SERVICE AREA</div>
+            <h2 class="sec-title">출동 <span>가능 지역</span></h2>
+            <p class="sec-desc">서울·인천·경기 전 지역 담당 전문가 보유</p>
+        </div>
+        <div class="area-grid">
+            <div class="area-card"><h3>서울</h3><p>강남 서초 송파 강동 강서 마포 종로 중구 용산 성동 광진 동대문 성북 강북 노원 은평 양천 구로 영등포 동작 관악</p></div>
+            <div class="area-card"><h3>경기</h3><p>수원 성남 분당 용인 안양 부천 광명 평택 안산 고양 일산 의정부 파주 김포 하남 남양주 구리 광주 이천</p></div>
+            <div class="area-card"><h3>인천</h3><p>중구 동구 미추홀 연수 남동 부평 계양 서구 강화 송도 청라 검단</p></div>
+            <div class="area-card"><h3>전국</h3><p>위 지역 외에도 전국 담당 전문가 연결 가능합니다. 지역에 따라 연결 가능 여부 확인 후 안내드립니다.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-sec">
+    <div class="cta-inner">
+        <h2>전기 문제는 <span>지금 바로</span><br>전문가에게 연결하세요</h2>
+        <p>누전·차단기·조명·콘센트 — 담당 지역 전문가가 빠르게 해결합니다<br>24시간 365일 언제든 전화 한 통으로 즉시 연결</p>
+        <a href="tel:0504-1362-8442" class="cta-btn">⚡ 0504-1362-8442</a>
+        <p class="cta-note">24시간 365일 · 서울 인천 경기 전국 · 담당 지역 전문가 즉시 연결</p>
+    </div>
+</section>
+
+<!-- 면책 고지 - 최하단 회색 -->
+<div class="disclaimer">
+    <div class="disclaimer-inner">
+        <p>
+            <span class="highlight">【 서비스 안내 】</span><br>
+            본 서비스는 <span class="highlight">직접 공사를 진행하는 도급 업체가 아닌</span>, 담당 지역의 전기 전문가를 연결해드리는 <span class="highlight">소개·중개 서비스</span>입니다.<br>
+            실제 작업 진행 및 견적은 <span class="highlight">연결된 담당 지역 전기 대표님과 직접 협의</span>하여 결정하시기 바랍니다.<br><br>
+            본 서비스를 통해 연결 가능한 작업 범위는 <span class="highlight">5kW(킬로와트) 미만의 간단한 전기 작업</span>에 한하며,<br>
+            조명 교체·차단기 수리·누전 보수·콘센트 교체 등 <span class="highlight">소규모 전기 수리 작업만 연결 가능</span>합니다.<br>
+            5kW 이상의 대용량 전력 공사, 신규 인입 공사, 대규모 전기 시설 공사는 연결이 어려울 수 있습니다.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>전기 전문가 연결 서비스 · 서울 인천 경기 전국</p>
+    <p style="margin-top:8px">24시간 연결: <span>0504-1362-8442</span></p>
+</footer>
+
+<script>
+const container = document.getElementById('particles');
+for(let i = 0; i < 15; i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `left:${Math.random()*100}%;height:${60+Math.random()*80}px;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s;opacity:${0.3+Math.random()*0.5};width:${1+Math.random()*2}px;background:linear-gradient(180deg,#f59600,#fcd34d,transparent);`;
+    container.appendChild(p);
+}
+</script>
+</body>
+</html>
